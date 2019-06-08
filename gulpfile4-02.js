@@ -12,8 +12,7 @@ npm i -D pump
 npm i -D gulp-babel@next @babel/core
 */
 
-/* remember to install gulp-cli globally */
-const gulp = require('gulp');
+const { src, dest, series, parallel, watch } = require('gulp');
 const sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var pump = require('pump');
@@ -21,43 +20,54 @@ var uglifycss = require('gulp-uglifycss');
 
 /* functions */
 
+/*
+Transpile SCSS from /scss into CSS and place in /src_css
+*/
 const transpilescss = () => {
-    return gulp.src('./scss/**/*.scss')
+    return src('./scss/**/*.scss')
     .pipe(sass())
-    .pipe(gulp.dest('./src_css'));
+    .pipe(dest('./src_css'));
 };
 
-
+/*
+Minify CSS from /src_css and place in /css
+*/
 const compresscss = () => {
-  return gulp.src('./src_css/**/*.css')
+  return src('./src_css/**/*.css')
     .pipe(uglifycss({
       "maxLineLen": 0,
       "uglyComments": true
     }))
-    .pipe(gulp.dest('./css'));
+    .pipe(dest('./css'));
 };
 
+/*
+Minify JS from /src_js and place in /js
+*/
 const compressjs = () => {
   return pump([
-       gulp.src('./src_js/**/*.js'),
+       src('./src_js/**/*.js'),
        uglify(),
-       gulp.dest('./js')
+       dest('./js')
       ]
     );
 };
 
+/*
+Watch for changes in SCSS and transpile
+*/
 const watchcss = () => {
-  return gulp.watch('./scss/**/*.scss', gulp.parallel(transpilescss));
+  return watch('./scss/**/*.scss', transpilescss);
 };
 
-/* tasks, until I get export working */
 
-gulp.task('scss', gulp.parallel(transpilescss));
+/*
+Transpile the SCSS
+Minify the CSS
+Minify the JS
+*/
+exports.all = series(transpilescss, compresscss, compressjs);
 
-gulp.task('comp', gulp.parallel(compresscss, compressjs));
-
-gulp.task('all', gulp.parallel(gulp.series(transpilescss, compresscss), compressjs));
-
-// default will also watch
-gulp.task('default', gulp.parallel(watchcss));
+// default will watch
+exports.default = watchcss;
 

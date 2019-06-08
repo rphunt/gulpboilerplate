@@ -3,15 +3,13 @@ Gulp 4 build flow
 
 NPM Setup:
 
-npm i gulp --global
-npm i -D gulp
-npm i -D gulp-inject
-npm i -D gulp-sass
-npm i -D gulp-uglify
-npm i -D gulp-uglifycss
-npm i -D gulp-htmlmin
-npm i -D pump
-npm i -D gulp-babel@next @babel/core
+npm install gulp --global
+npm install --save-dev gulp
+npm install --save-dev gulp-sass
+npm install --save-dev gulp-uglify
+npm install --save-dev gulp-uglifycss
+npm install --save-dev pump
+npm install --save-dev gulp-babel@next @babel/core
 */
 
 /*
@@ -107,11 +105,5 @@ const comphtml = () => {
     .pipe(dest('./dist'));
 };
 
-/*
-Transpile the SCSS
-Minify the CSS
-Minify the JS
-Inject the JS and CSS into index.html
-Minify the index.html
-*/
+
 exports.all = series(transpilescss, compresscss, compressjs, injectjscss, comphtml);
