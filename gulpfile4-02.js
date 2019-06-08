@@ -12,6 +12,14 @@ npm i -D pump
 npm i -D gulp-babel@next @babel/core
 */
 
+/*
+This is a very basic gulp flow.
+Transpiles SCSS from /scss to CSS in /src_css
+Minifies CSS from /src_css to /css
+Minifies JS from /src_js to /js
+Can watch SCSS for changes and transpile
+*/
+
 const { src, dest, series, parallel, watch } = require('gulp');
 const sass = require('gulp-sass');
 var uglify = require('gulp-uglify');

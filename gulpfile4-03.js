@@ -14,13 +14,13 @@ npm install --save-dev gulp-babel@next @babel/core
 */
 
 /*
-This gulp flow is used ina WorPress theme project.
+This gulp flow is used in a WorPress theme project.
 Transpiles SCSS to CSS
 Minifies CSS and JS
 Copies all required theme files into /dist
 
 Default will watch SCSS and JS, then transpile and minify them.
-'gulp all  will ttranspile and miniy SCSS and JS'.
+'gulp all  will transpile and miniy SCSS and JS'.
 'gulp dist' will copy theme files to /dist
 */
 
