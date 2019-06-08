@@ -24,10 +24,10 @@ It does not watch for changes, but when the HTML, CSS, and JSS
 are at a certain point to bundle, run 'gulp all'.
 
 Edited files are in /start.
-Transpiled scss goes to /tmp
-compressed css and js go to /dest
-html with injected css and js goes to /dest
-compressed html goes to /dist
+Transpiled SCSS goes to /tmp
+minified CSS and JS go to /dest
+HTML with injected CSS and JS goes to /dest
+minified HTML goes to /dist
 */
 
 const { src, dest, series, parallel, watch } = require('gulp');
