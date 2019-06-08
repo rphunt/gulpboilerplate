@@ -37,5 +37,5 @@ This gulp flow is used in a WorPress theme project.
 Tasks:
 
 * Default will watch SCSS and JS, then transpile and minify them.
-* 'gulp all  will transpile and miniy SCSS and JS'.
+* 'gulp all'  will transpile and miniy SCSS and JS'.
 * 'gulp dist' will copy theme files to /dist
