@@ -17,8 +17,11 @@ npm i -D gulp-tumblr
 */
 
 /*
-The idea of this gulp flowe is not really to constantly update files on every change, but when the html, css, and js
-are at a certain point to upload, to run 'gulp all'.
+The idea of this gulp flow is to take SCSS and JC and insert it as text into index.html,
+resulting in one self contained file.
+
+It does not watch for changes, but when the HTML, CSS, and JSS
+are at a certain point to bundle, run 'gulp all'.
 
 Edited files are in /start.
 Transpiled scss goes to /tmp
