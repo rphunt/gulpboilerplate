@@ -28,7 +28,7 @@ This is a very basic gulp flow.
 
 ## gulpfile4-03.js: Gulp configuration file for version 4.
 
-This gulp flow is used in a WorPress theme project.
+This gulp flow is used in a WordPress theme project.
 
 * Transpiles SCSS to CSS
 * Minifies CSS and JS
