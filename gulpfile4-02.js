@@ -26,6 +26,7 @@ const sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var pump = require('pump');
 var uglifycss = require('gulp-uglifycss');
+const babel = require('gulp-babel');
 
 /* functions */
 
