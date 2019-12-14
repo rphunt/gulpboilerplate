@@ -10,6 +10,7 @@ npm i -D gulp-uglify
 npm i -D gulp-uglifycss
 npm i -D pump
 npm i -D gulp-babel@next @babel/core
+npm i -D gulp-babel@next @babel/core @babel/preset-env
 */
 
 /*
@@ -35,6 +36,17 @@ const transpilescss = () => {
     return src('./scss/**/*.scss')
     .pipe(sass())
     .pipe(dest('./src_css'));
+};
+
+/*
+  Transpile ES6+ from /js into ES5 and place in /src_js
+*/
+const transpilejs = () => {
+  return src('./js6/**/*.js')
+    .pipe(babel({
+            presets: ['@babel/env']
+        }))
+    .pipe(dest('./src_js'));
 };
 
 /*
@@ -74,7 +86,7 @@ Transpile the SCSS
 Minify the CSS
 Minify the JS
 */
-exports.all = series(transpilescss, compresscss, compressjs);
+exports.all = series(transpilescss, transpilejs, compresscss, compressjs);
 
 // default will watch
 exports.default = watchcss;
